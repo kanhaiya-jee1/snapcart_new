@@ -32,22 +32,20 @@ const Login = () => {
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-       setLoading(true)
+    setLoading(true)
 
     try {
-        await signIn("credentials",{
-            email,password
-        })
-         router.push("/")
-          setLoading(false)
-
+      await signIn("credentials", {
+        email,
+        password,
+        callbackUrl: "/",
+        redirectTo: "/"
+      })
     } catch (error) {
       console.log(error)
       setLoading(false)
-    
+    }
   }
-
-}
 
   return (
 
